@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://reverside.co.za/schema"
+        xmlns:tns="http://reverside.co.za/schema"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        jaxb:version="2.1"
+        elementFormDefault="qualified">
+
+   <element name="quotation">
+       <complexType>
+           <sequence>
+               <element name="firstName" type="string"/>
+               <element name="lastName"  type="string"/>
+           </sequence>
+       </complexType>
+   </element>
+
+</schema>
