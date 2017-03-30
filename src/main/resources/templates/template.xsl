@@ -4,7 +4,7 @@
                 xmlns:ns="http://reverside.co.za/schema">
 <xsl:output method="text" media-type="text/plain" indent="no"/>
 <xsl:template match="/ns:quotation">
-Dear <xsl:value-of select="concat(ns:firstName, ' ', ns:lastName )"/>,
+Dear <xsl:value-of select="concat(ns:firstName, ' ', ns:lastName)"/>,
 
 How are you ? Hope you are doing well.
 
