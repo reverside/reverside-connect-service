@@ -6,13 +6,6 @@
         jaxb:version="2.1"
         elementFormDefault="qualified">
 
-   <element name="quotation">
-       <complexType>
-           <sequence>
-               <element name="firstName" type="string"/>
-               <element name="lastName"  type="string"/>
-           </sequence>
-       </complexType>
-   </element>
+   <include schemaLocation="quotation.xsd"/>
 
 </schema>
