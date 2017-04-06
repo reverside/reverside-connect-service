@@ -32,7 +32,7 @@
 
 		<dependency>
 			<groupId>com.zenerick.service</groupId>
-            <artifactId>zenerick-mail-service</artifactId>
+            <artifactId>zenerick-notification-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

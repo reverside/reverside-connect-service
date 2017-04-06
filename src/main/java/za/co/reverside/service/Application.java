@@ -2,12 +2,12 @@ package za.co.reverside.service;
 
 
 import com.mangofactory.swagger.plugin.EnableSwagger;
+import com.zenerick.service.notification.Service;
 
-import com.zenerick.service.MailService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@MailService
+@Service
 @EnableSwagger
 @SpringBootApplication
 public class Application {
