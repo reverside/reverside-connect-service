@@ -1,55 +1,42 @@
 package za.co.reverside.service.es;
 
-import java.util.List;
 
-import com.zenerick.core.mapper.Mapper;
+import lombok.Data;
 
-
-public class Aggregate<T> {
+@Data
+public class Aggregate<T>{
 	
-	private String  id;
+	private String id;
 	
-	private T       value;
+	private T value;
 	
-	private Integer version;
+	private int version;
 	
-	public Aggregate(String id, Class<T> type, List<Event> events) throws Exception{
+	public Aggregate(String id, Class<T> type) throws Exception {
 		this.id = id;
-		this.version = -1;
+		this.version = 0;
 		this.value = type.getConstructor(String.class).newInstance(id);
-		for(Event event : events) {	
-			apply(event); 
-		}
 	}
 	
-	public void apply(Event event) throws Exception{
-		Class<?> eventType = Class.forName(event.getType());
-		Object eventData = new Mapper().readValue(event.getData(), eventType);
-		value.getClass().getMethod("apply", eventType).invoke(value, eventData);
-		this.version++;
+	public String id(){
+		return id;
 	}
 	
-	public Event handle(Object command, String user) throws Exception{
-		Object anEvent= this.value.getClass().getMethod("handle", command.getClass()).invoke(value, command);
-		Event event = new Event();
-		event.setType(anEvent.getClass().getCanonicalName());
-		event.setData(new Mapper().writeValueAsString(anEvent));
-		event.setTime(System.currentTimeMillis());
-		event.setServer("localhost");
-		event.setUser(user);
-		event.setAggregateType(value.getClass().getCanonicalName());
-		event.setAggregateId(this.id);
-		event.setAggregateVersion(this.getVersion()+1);
-		return event;
-	}
-	
-
-	public T getValue(){
+	public T value(){
 		return value;
 	}
 	
-	public int getVersion(){
+	public int version(){
 		return version;
 	}
-		
+	
+	public String type(){
+		return value.getClass().getCanonicalName();
+	}
+	
+	public void apply(Event event, Handler<T> handler) throws Exception{
+		handler.apply(event, value);
+		version++;
+	}	
+	
 }

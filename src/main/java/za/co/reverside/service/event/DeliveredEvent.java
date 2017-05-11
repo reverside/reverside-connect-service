@@ -3,6 +3,7 @@ package za.co.reverside.service.event;
 import lombok.Data;
 
 @Data
-public class CompletedEvent {
-
+public class DeliveredEvent {
+	
+	private Boolean status;
 }

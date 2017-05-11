@@ -6,8 +6,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.zenerick.core.mapper.Mapper;
-
 @Data
 @Document
 @CompoundIndex(name = "key", def = "{'aggregateId' : 1, 'aggregateVersion' : 1}", unique=true)

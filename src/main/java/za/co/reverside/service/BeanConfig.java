@@ -8,6 +8,7 @@ import com.zenerick.core.mapper.Mapper;
 
 @Configuration
 public class BeanConfig  {
+	
     @Bean
     public Mapper mapper(){
         Mapper mapper = new Mapper();
@@ -15,5 +16,4 @@ public class BeanConfig  {
         return mapper;
     }
     
-      
 }

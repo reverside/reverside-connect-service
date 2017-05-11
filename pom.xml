@@ -95,6 +95,7 @@
 							<schemaDirectory>${basedir}/src/main/resources/schemas</schemaDirectory>
 							<bindingDirectory>${basedir}/src/main/resources/schemas</bindingDirectory>
 							<outputDirectory>${basedir}/target/generated-sources</outputDirectory>
+							
 						</configuration>
 					</execution>
 				</executions>

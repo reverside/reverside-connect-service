@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class FailedEvent {
 	
+	private Boolean status;
 }

@@ -1,11 +1,16 @@
 package za.co.reverside.service.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-@Data
-@EqualsAndHashCode(callSuper=false)
-public class Notification extends Aggregate {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
+@NoArgsConstructor
+public class Notification {
+	
+	@Id
+	protected String id;
 	
 	protected String to;
 	
@@ -17,7 +22,6 @@ public class Notification extends Aggregate {
 	
 	public Notification(String id){
 		this.id = id;
-		this.version = 0;
 	}
-
+	
 }

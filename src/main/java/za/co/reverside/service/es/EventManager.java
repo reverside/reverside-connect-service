@@ -1,51 +1,42 @@
 package za.co.reverside.service.es;
 
 import java.util.List;
-import java.util.Map;
 
-import za.co.reverside.service.domain.Aggregate;
-import za.co.reverside.service.handler.IEvent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.zenerick.core.mapper.Mapper;
 
-
-public class EventManager<T extends Aggregate> {
+@Component
+public class EventManager<T> {
 	
-	private Map<String, EventHandler<T>> map;
-	
+	@Autowired
 	private EventStore store;
 	
-	public EventManager(Map<String, EventHandler<T>> map){
-		this.map = map;
-	}
+	@Autowired
+	private Handler<T> handler;
 	
-	public T build(String id, Class<T> type) throws Exception {
+	public Aggregate<T> aggregate(String id, Class<T> type) throws Exception {
 		List<Event> events = store.history(id, type);
-		int version = 0;
-		T resource = type.newInstance();
-		resource.setId(id);
-		resource.setVersion(version);
+		System.out.println(">> "+events.size());
+		Aggregate<T> aggregate = new Aggregate<T>(id, type);
 		for(Event event : events){
-			IEvent anEvent = new Mapper().readValue(event.getData(), IEvent.class);
-			map.get(event.getType()).apply(anEvent, resource);
-			resource.setVersion(version++);
+			aggregate.apply(event, handler);
 		}
-		return resource;
+		return aggregate;
 	}
 	
-	public void publish(Object data, T resource, String user) throws Exception {
+	public void publish(Object data, Aggregate<T> aggregate, String user) throws Exception {
 		Event event = new Event();
 		event.setType(data.getClass().getCanonicalName());
 		event.setData(new Mapper().writeValueAsString(data));
 		event.setTime(System.currentTimeMillis());
 		event.setServer("localhost");
 		event.setUser(user);
-		event.setAggregateType(resource.getClass().getCanonicalName());
-		event.setAggregateId(resource.getId());
-		event.setAggregateVersion(resource.getVersion()+1);
+		event.setAggregateType(aggregate.type());
+		event.setAggregateId(aggregate.id());
+		event.setAggregateVersion(aggregate.version()+1);
 		store.publish(event);
 	}
-
-	
 
 }
