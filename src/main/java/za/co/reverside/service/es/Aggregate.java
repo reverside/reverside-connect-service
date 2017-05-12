@@ -1,9 +1,8 @@
 package za.co.reverside.service.es;
 
 
-import lombok.Data;
+import java.util.List;
 
-@Data
 public class Aggregate<T>{
 	
 	private String id;
@@ -12,10 +11,13 @@ public class Aggregate<T>{
 	
 	private int version;
 	
-	public Aggregate(String id, Class<T> type) throws Exception {
+	public Aggregate(String id, Class<T> type, List<Event> events, EventHandler<T> handler) throws Exception {
 		this.id = id;
 		this.version = 0;
 		this.value = type.getConstructor(String.class).newInstance(id);
+		for(Event event : events){
+			this.apply(event, handler);
+		}
 	}
 	
 	public String id(){
@@ -34,8 +36,8 @@ public class Aggregate<T>{
 		return value.getClass().getCanonicalName();
 	}
 	
-	public void apply(Event event, Handler<T> handler) throws Exception{
-		handler.apply(event, value);
+	public void apply(Event event, EventHandler<T> applicator) throws Exception{
+		applicator.apply(event, value);
 		version++;
 	}	
 	

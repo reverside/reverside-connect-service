@@ -2,13 +2,13 @@ package za.co.reverside.service.es;
 
 import java.util.List;
 
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageBuilder;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.stereotype.Service;
+
+import com.zenerick.core.mapper.Mapper;
 
 @Service
 public class EventStore {
@@ -19,12 +19,23 @@ public class EventStore {
 	@Autowired
 	private RabbitTemplate rabbitTemplate;
 
+	public void publish(Object data, Aggregate<?> aggregate, String user) throws Exception {
+		Event event = new Event();
+		event.setType(data.getClass().getCanonicalName());
+		event.setData(new Mapper().writeValueAsString(data));
+		event.setTime(System.currentTimeMillis());
+		event.setServer("localhost");
+		event.setUser(user);
+		event.setAggregateType(aggregate.type());
+		event.setAggregateId(aggregate.id());
+		event.setAggregateVersion(aggregate.version()+1);
+		publish(event);
+	}
 	
-	public void publish(Event event) {
+	private void publish(Event event) {
 		System.out.println("Start : Publish Event");
 		mongoTemplate.insert(event);
-		Message message = MessageBuilder.withBody(event.getData().getBytes()).setHeader("id", event.getAggregateId()).build();
-		rabbitTemplate.send("x.events", event.getType(), message);
+		rabbitTemplate.convertAndSend("x.events", event.getType(), event);
 		event.setPublished(true);
 		mongoTemplate.save(event);
 		System.out.println("Close : Publish Event");

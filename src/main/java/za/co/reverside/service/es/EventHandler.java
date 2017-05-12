@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 import com.zenerick.core.mapper.Mapper;
 
-public abstract class Handler<T> {
+public abstract class EventHandler<T> {
 	
 	public void apply(Event event, T resource) throws Exception{
 		Class<?> eventType = Class.forName(event.getType());
