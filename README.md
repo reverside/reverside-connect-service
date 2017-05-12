@@ -1,0 +1,6 @@
+- Implement MailAdapter
+- Auto Configure Queues & Exchnages & Bindings
+- Recon Process & Exception Handling
+- Validations & Generalization & Configuration
+- Performance Testing & Loopholes Testing
+- Validate Decoupling & Deployment
