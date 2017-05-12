@@ -1,6 +1,7 @@
 - Implement MailAdapter
 - Auto Configure Queues & Exchnages & Bindings
 - Recon Process & Exception Handling
+- Externalize Event Sourcing Module
 - Validations & Generalization & Configuration
 - Performance Testing & Loopholes Testing
 - Validate Decoupling & Deployment
