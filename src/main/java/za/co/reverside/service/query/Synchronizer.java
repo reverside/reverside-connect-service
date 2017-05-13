@@ -21,11 +21,13 @@ public class Synchronizer {
 	
 	@RabbitListener(queues = "q.event")
 	public void onEvent(@Payload Event event) throws Exception{
+		System.out.println(System.currentTimeMillis());
 		System.out.println("Sync Event : " + event);
 		Notification resource = repository.findOne(event.getAggregateId());
 		if(resource==null) resource = new Notification(event.getAggregateId());
 		handler.apply(event, resource);
 		repository.save(resource);
+		System.out.println(System.currentTimeMillis());
 	}
 
 }
