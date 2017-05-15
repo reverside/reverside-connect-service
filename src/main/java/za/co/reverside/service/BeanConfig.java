@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.zenerick.core.mapper.Mapper;
 
 @Configuration
-public class BeanConfig  implements RabbitListenerConfigurer{
+public class BeanConfig {
 	
     @Bean
     public Mapper mapper(){
@@ -24,33 +24,5 @@ public class BeanConfig  implements RabbitListenerConfigurer{
     }
     
     
-    @Bean
-    public Jackson2JsonMessageConverter jackson2Converter() {
-    	return new Jackson2JsonMessageConverter();
-    }
-    
-    @Bean
-    public RabbitTemplate rabbitTemplate(final ConnectionFactory connectionFactory) {
-    	final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-    	rabbitTemplate.setMessageConverter(jackson2Converter());
-    	return rabbitTemplate;
-    }
-	
-	@Bean
-    public MappingJackson2MessageConverter consumerJackson2MessageConverter() {
-       return new MappingJackson2MessageConverter();
-    }
-	
-	@Bean
-    public DefaultMessageHandlerMethodFactory messageHandlerMethodFactory() {
-       DefaultMessageHandlerMethodFactory factory = new DefaultMessageHandlerMethodFactory();
-       factory.setMessageConverter(consumerJackson2MessageConverter());
-       return factory;
-    }
-	
-	@Override
-	public void configureRabbitListeners(final RabbitListenerEndpointRegistrar registrar) {
-		registrar.setMessageHandlerMethodFactory(messageHandlerMethodFactory());
-	}
 
 }

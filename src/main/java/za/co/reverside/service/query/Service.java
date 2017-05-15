@@ -25,7 +25,7 @@ public class Service {
 	@Autowired
 	NotificationRepository repository;
 	
-	@RequestMapping(path="/api/query/notifications", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(path="/api/notifications", method=RequestMethod.GET, produces="application/json")
 	public List<Multiple> findNotifications(){
 	  List<Notification> notifications = repository.findAll();
 	  List<Multiple> result = new ArrayList<Multiple>();
@@ -36,7 +36,7 @@ public class Service {
 	  return result;
 	}
 	
-	@RequestMapping(path="/api/query/notifications/{id}", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(path="/api/notifications/{id}", method=RequestMethod.GET, produces="application/json")
 	public Single findNotification(@PathVariable("id") String id){
 	  Notification notification = repository.findOne(id);
 	  if(notification != null){

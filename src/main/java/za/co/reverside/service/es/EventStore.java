@@ -35,7 +35,7 @@ public class EventStore {
 	private void publish(Event event) {
 		System.out.println("Start : Publish Event");
 		mongoTemplate.insert(event);
-		rabbitTemplate.convertAndSend("x.events", event.getType(), event);
+		rabbitTemplate.convertAndSend("x.notification", event.getType(), event);
 		event.setPublished(true);
 		mongoTemplate.save(event);
 		System.out.println("Close : Publish Event");

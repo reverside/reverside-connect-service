@@ -3,6 +3,9 @@ package za.co.reverside.service.command;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
+import org.springframework.amqp.rabbit.annotation.Exchange;
+import org.springframework.amqp.rabbit.annotation.Queue;
+import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,8 @@ import za.co.reverside.service.es.EventStore;
 
 import com.zenerick.core.mapper.Mapper;
 
+import java.util.HashMap;
+
 @Service
 public class Gateway {
 	
@@ -34,17 +39,20 @@ public class Gateway {
 	@Autowired
 	private RabbitTemplate template;
 
-	@RabbitListener(queues = "q.mail")
+	@RabbitListener(bindings = @QueueBinding(
+			value =    @Queue(value = "q.notifications.mail", durable = "true"),
+			exchange = @Exchange(value = "x.notification", type = "topic"),
+			key =      "za.co.reverside.domain.event.Generated"))
 	public void handle(@Payload final Event event) throws Exception {
 		Generated data = new Mapper().readValue(event.getData(), Generated.class);
 		Close command = new Close();
-		try{
-			adapter.sendMail(data.getTo(), data.getSubject(), data.getMessage());
+		try {
+			adapter.send(data.getTo(), data.getSubject(), data.getMessage(), new HashMap<String, String>());
 			command.setStatus(true);
 		} catch(Exception e){
 			command.setStatus(false);
 		}
-		template.convertAndSend("q.command.notifications.close", command, new MessagePostProcessor() {
+		template.convertAndSend("amq.exchange",command.getClass().getCanonicalName(), command, new MessagePostProcessor() {
 			@Override
 			public Message postProcessMessage(Message message) throws AmqpException {
 				message.getMessageProperties().getHeaders().put("aggregateId",event.getAggregateId());

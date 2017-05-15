@@ -26,7 +26,7 @@ public class Service {
 	@Autowired
 	private EventStore store;
 
-	@RequestMapping(path = "api/command/notifications/send", method=RequestMethod.POST, consumes="application/json")
+	@RequestMapping(path = "api/notifications/send", method=RequestMethod.POST, consumes="application/json")
 	public void handle(@RequestParam("user") String user, @RequestParam("id") String id, @RequestBody Send command) throws Exception{
 		System.out.println("Send Command Received : " + System.currentTimeMillis());
 		List<Event> events = store.history(id, Notification.class); 
