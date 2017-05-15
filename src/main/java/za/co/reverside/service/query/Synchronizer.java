@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
+import com.zenerick.core.es.Event;
+import com.zenerick.core.es.EventHandler;
+
 import za.co.reverside.service.domain.model.Notification;
-import za.co.reverside.service.es.Event;
-import za.co.reverside.service.es.EventHandler;
 import za.co.reverside.service.query.repository.NotificationRepository;
 
 @Service
@@ -25,12 +26,12 @@ public class Synchronizer {
 	@RabbitListener(bindings = @QueueBinding(
 			value = @Queue(value = "q.notifications.event", durable = "true"),
 			exchange = @Exchange(value = "x.notification", type = "topic"),
-			key = "za.co.reverside.domain.event.*"))
+			key = "za.co.reverside.service.domain.event.*"))
 	public void onEvent(@Payload Event event) throws Exception{
 		System.out.println(System.currentTimeMillis());
 		System.out.println("Sync Event : " + event);
-		Notification resource = repository.findOne(event.getAggregateId());
-		if(resource==null) resource = new Notification(event.getAggregateId());
+		Notification resource = repository.findOne(event.getReference());
+		if(resource==null) resource = new Notification(event.getReference());
 		handler.apply(event, resource);
 		repository.save(resource);
 		System.out.println(System.currentTimeMillis());

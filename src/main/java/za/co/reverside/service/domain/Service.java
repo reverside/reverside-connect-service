@@ -1,13 +1,14 @@
 package za.co.reverside.service.domain;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import za.co.reverside.service.domain.event.Delivered;
 import za.co.reverside.service.domain.event.Generated;
 import za.co.reverside.service.domain.model.Notification;
-import za.co.reverside.service.es.EventHandler;
 
+import com.zenerick.core.es.EventHandler;
 import com.zenerick.core.mapper.Mapper;
 
 @Component("domain")

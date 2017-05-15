@@ -1,16 +1,14 @@
 package za.co.reverside.service;
 
-import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.messaging.converter.MappingJackson2MessageConverter;
-import org.springframework.messaging.handler.annotation.support.DefaultMessageHandlerMethodFactory;
+import org.springframework.data.mongodb.core.MongoTemplate;
+
+import za.co.reverside.service.domain.model.Notification;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.zenerick.core.es.EventStore;
 import com.zenerick.core.mapper.Mapper;
 
 @Configuration
@@ -23,6 +21,9 @@ public class BeanConfig {
         return mapper;
     }
     
-    
+    @Bean
+    public EventStore<Notification> eventStore(MongoTemplate mongoTemplate, RabbitTemplate rabbitTemplate){
+    	return new EventStore<Notification>(mongoTemplate, rabbitTemplate);
+    }
 
 }

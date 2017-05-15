@@ -6,6 +6,6 @@
         jaxb:version="2.1"
         elementFormDefault="qualified">
 
-   <include schemaLocation="quotation.xsd"/>
+   <include schemaLocation="notification.xsd"/>
 
 </schema>

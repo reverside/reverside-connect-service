@@ -1,17 +1,17 @@
 package za.co.reverside.service.command.adapter;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.InputStreamSource;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Component;
-
-import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Map;
+
+import javax.mail.internet.MimeMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamSource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Component;
 
 @Component
 public class MailAdapter {
@@ -28,7 +28,7 @@ public class MailAdapter {
 		helper.setFrom(mailFrom);
 		helper.setTo(to);
 		helper.setSubject(subject);
-		for(Map.Entry<String,String> entry : attachments.entrySet()){
+		for(final Map.Entry<String,String> entry : attachments.entrySet()){
 			helper.addAttachment(entry.getKey(), new InputStreamSource() {
 				@Override
 				public InputStream getInputStream() throws IOException {
