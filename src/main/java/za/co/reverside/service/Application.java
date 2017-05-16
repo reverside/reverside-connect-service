@@ -1,19 +1,14 @@
 package za.co.reverside.service;
 
-
-import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.mangofactory.swagger.plugin.EnableSwagger;
+import com.zenerick.service.notification.Service;
 
-@EnableRabbit
-@EnableSwagger
-@SpringBootApplication
+@Service
 public class Application {
 
-    public static void main(String[] args){
-        SpringApplication.run(Application.class, args);
-        
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+
+	}
 }
