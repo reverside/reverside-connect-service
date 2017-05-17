@@ -6,7 +6,7 @@
         jaxb:version="2.1"
         elementFormDefault="qualified">
 
-   <element name="quotation">
+   <element name="birthday">
        <complexType>
            <sequence>
                <element name="firstName" type="string"/>

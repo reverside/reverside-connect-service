@@ -6,6 +6,6 @@
         jaxb:version="2.1"
         elementFormDefault="qualified">
 
-   <include schemaLocation="notification.xsd"/>
+   <include schemaLocation="birthday.xsd"/>
 
 </schema>
