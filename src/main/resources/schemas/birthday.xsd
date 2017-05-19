@@ -9,8 +9,8 @@
    <element name="birthday">
        <complexType>
            <sequence>
-               <element name="firstName" type="string"/>
-               <element name="lastName"  type="string"/>
+               <element name="name"  type="string"/>
+               <element name="photo" type="anyURI"/>
            </sequence>
        </complexType>
    </element>

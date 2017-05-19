@@ -10,10 +10,10 @@
 &lt;html&gt;
 &lt;body&gt;
 &lt;div style="width:100%; text-align: center;"&gt;
-&lt;img src="https://blogs-images.forbes.com/jacobmorgan/files/2015/05/Jacob-Morgan_avatar_1430962685-400x400.jpg" width="100px;" height="100px;"&gt;
+&lt;img src="<xsl:value-of select="ns:photo"/>" alt="..Loading...." style="width:150px;  height: 150px;  margin: 2px; border: 2px dotted silver; border-radius: 150px; -webkit-border-radius: 150px; -moz-border-radius: 150px; text-align: center; line-height: 150px;"&gt;
 &lt;/div&gt;
 &lt;div style="width:100%; text-align: center;"&gt;
-Dear <xsl:value-of select="ns:firstName"/>
+Dear <xsl:value-of select="ns:name"/>
 &lt;h3 style="font-style:italic;"&gt;
 Wish You A
 &lt;/h3&gt;
@@ -29,9 +29,16 @@ Enjoy Your Day
 &lt;/html&gt;
 </xsl:when>
 <xsl:when test="$channel='sms'">
-Dear <xsl:value-of select="ns:firstName"/>
-Wish You A Happy Birthday
-From:Reverside
+Good Morning :-)
+
+       _!_!_!_!_
+     !..............!
+   !..................!
+ !______________!  
+ Happy Birthday     
+
+From:
+Reverside 
 </xsl:when>
 </xsl:choose>
 </xsl:template>
