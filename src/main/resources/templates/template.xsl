@@ -3,4 +3,6 @@
   
   <xsl:include href="birthday.xsl"/>
   
+   <xsl:include href="scheduler.xsl"/>
+  
 </xsl:stylesheet>
