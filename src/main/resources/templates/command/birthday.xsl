@@ -2,10 +2,11 @@
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:ns="http://reverside.co.za/schema">
-<xsl:output method="text" media-type="text/plain" indent="no"/>
+<xsl:output method="text" media-type="text/plain" indent="no" omit-xml-declaration="yes"/>
 <xsl:param name="channel"/>
 <xsl:template match="/ns:birthday">
 <xsl:choose>
+
 <xsl:when test="$channel='mail'">
 &lt;html&gt;
 &lt;body&gt;
@@ -25,18 +26,21 @@ Enjoy Your Day
 &lt;/body&gt;
 &lt;/html&gt;
 </xsl:when>
+
 <xsl:when test="$channel='sms'">
 Good Morning :-)
 
        _!_!_!_!_
      !..............!
    !..................!
- !______________!  
- Happy Birthday     
+ !______________!
+ Happy Birthday
 
 From:
-Reverside 
+Reverside
 </xsl:when>
+
 </xsl:choose>
 </xsl:template>
+
 </xsl:stylesheet>

@@ -1,0 +1,8 @@
+[
+	{
+		"name" : "Birthday Reminder",
+		"time" : "0/30 * * * * *",
+		"data" : "select * from employees",
+		"type" : "za.co.reverside.schema.BirthdayTask"
+	}
+]
