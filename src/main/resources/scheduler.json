@@ -1,8 +1,8 @@
 [
 	{
 		"name" : "Birthday Reminder",
-		"time" : "0/30 * * * * *",
-		"data" : "select * from employees",
+		"time" : "0 0 6 * * *",
+		"data" : "SELECT  * FROM EMPLOYEES WHERE MONTH(TO_DATE(DOB, 'DD/MM/YYYY')) = MONTH(CURRENT_DATE) AND DAYOFMONTH(TO_DATE(DOB, 'DD/MM/YYYY')) = DAYOFMONTH(CURRENT_DATE)",
 		"type" : "za.co.reverside.schema.BirthdayTask"
 	}
 ]
