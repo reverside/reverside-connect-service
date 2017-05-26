@@ -6,5 +6,6 @@ CREATE TABLE employees (
     mobile 	varchar(255),
     photo 	varchar(255),
     dob 	varchar(255),
-    doj 	varchar(255)
+    doj 	varchar(255),
+    PRIMARY KEY (id)
 );

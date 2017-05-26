@@ -6,7 +6,7 @@
         jaxb:version="2.1"
         elementFormDefault="qualified">
    
-   <element name="birthdayTask">
+   <element name="BirthdayScheduler">
 		<complexType>
 			<sequence>
 				<element name="id"   type="int"/>

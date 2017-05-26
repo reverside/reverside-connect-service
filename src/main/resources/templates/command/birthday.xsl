@@ -4,7 +4,7 @@
                 xmlns:ns="http://reverside.co.za/schema">
 <xsl:output method="text" media-type="text/plain" indent="no" omit-xml-declaration="yes"/>
 <xsl:param name="channel"/>
-<xsl:template match="/ns:birthday">
+<xsl:template match="/ns:BirthdayCommand">
 <xsl:choose>
 
 <xsl:when test="$channel='mail'">
