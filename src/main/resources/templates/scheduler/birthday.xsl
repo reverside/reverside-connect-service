@@ -2,7 +2,8 @@
 <xsl:stylesheet version="2.0" 
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:ns="http://reverside.co.za/schema">
-  	<xsl:output method="xml"  indent="yes"/>
+
+  	<xsl:output method="xml" omit-xml-declaration="yes"/>
   	
   	<xsl:template match="/ns:BirthdayScheduler">
 		<Send xmlns="http://service.zenerick.com/notification/command">
