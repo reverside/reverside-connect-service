@@ -21,7 +21,7 @@
 <div style="width:100%; text-align: center;">
 Dear <xsl:value-of select="ns:name"/>
 <h1>
-<span style="color: red;">H</span><span style="color: violet;">a</span><span style="color: green;">p</span><span style="color: orange;">p</span><span style="color: blue;">y</span> &#160;&#160;<span style="color: green;">B</span><span style="color: red;">i</span><span style="color: violet;">r</span><span style="color: orange;">t</span><span style="color: blue;">h</span> &#160;&#160; <span style="color: red;">D</span><span style="color: violet;">a</span><span style="color: green;">y</span>
+<span style="color: red;">H</span><span style="color: violet;">a</span><span style="color: green;">p</span><span style="color: orange;">p</span><span style="color: blue;">y</span> &#160;<span style="color: green;">B</span><span style="color: red;">i</span><span style="color: violet;">r</span><span style="color: orange;">t</span><span style="color: blue;">h</span> &#160;<span style="color: red;">D</span><span style="color: violet;">a</span><span style="color: green;">y</span>
 </h1>
 <div>
 Enjoy Your Day 
