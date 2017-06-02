@@ -7,20 +7,18 @@
   	
   	<xsl:template match="/ns:BirthdayScheduler">
 		<Send xmlns="http://service.zenerick.com/notification/command">
-		  <type>BirthdayCommand</type>
-		  <tns:BirthdayCommand xmlns:tns="http://reverside.co.za/schema">
-			  <tns:name><xsl:value-of select="ns:name"/></tns:name>
-			  <tns:photo><xsl:value-of select="ns:photo"/></tns:photo>
-		  </tns:BirthdayCommand>
-		  <channel>
-		      <mail>
-		        <to><xsl:value-of select="ns:email"/></to>
-		        <subject>Happy Birthday</subject>
-		      </mail>
-		      <sms>
-		      	<mobile><xsl:value-of select="ns:mobile"/></mobile>
-		      </sms>
-		  </channel>
+		    <type>BirthdayCommand</type>
+		    <tns:BirthdayCommand xmlns:tns="http://reverside.co.za/schema">
+			    <tns:name><xsl:value-of select="ns:name"/></tns:name>
+			    <tns:photo><xsl:value-of select="ns:photo"/></tns:photo>
+		    </tns:BirthdayCommand>
+			<mail>
+				<to><xsl:value-of select="ns:email"/></to>
+				<subject>Happy Birthday</subject>
+			</mail>
+			<sms>
+				<mobile><xsl:value-of select="ns:mobile"/></mobile>
+			</sms>
 		</Send>
   	</xsl:template>
   
