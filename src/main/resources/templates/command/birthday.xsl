@@ -14,73 +14,106 @@
 <html>
     <head>
         <style>
-            .photo {
-                width:100px;
-                height: 100px;
-                margin: 2px;
-                border: 2px dotted silver;
-                border-radius: 100px;
-                -webkit-border-radius: 100px;
-                -moz-border-radius: 100px;
-                text-align: center;
-                line-height: 100px;
+
+            .preheader {
+                display:none !important;
+                visibility:hidden;
+                opacity:0;
+                color:transparent;
+                height:0;
+                width:0;
             }
-            .block-center {
-               padding: 10px;
-               text-align: center;
+            .container{
+            margin: 0px;
+            background: white;
+            }
+
+            .head{
+            text-align: right;
+            padding: 10px;
+            }
+
+            .foot{
+            text-align: center;
+            padding: 15px;
+            background: white;
+            color: silver;
+            }
+
+            .body{
+            text-align: center;
+            }
+
+            .img-circle {
+            width:100px;
+            height: 100px;
+            margin: 2px;
+            border: 2px dotted silver;
+            border-radius: 100px;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+            text-align: center;
+            line-height: 100px;
             }
         </style>
     </head>
 <body>
-    <div class="block-center">
-        <img alt="Loading...." class="photo">
-            <xsl:attribute name="src" select="ns:photo"/>
-        </img>
-    </div>
-    <div class="block-center">
-        <div>
-            Dear <xsl:value-of select="ns:name"/>
-            <br/>
-            <br/>
+    <div class="preheader">
+        Happy Birthday <br/></div>
+    <div class="container">
+        <div class="head">
+            <div style="font-size: 1.5pc; color: #154A9B;">
+                re<span style="color: #BA2022;">v</span>erside
+            </div>
         </div>
-        <div style="font-size: 2pc; font-weight: 900;">
-            <span style="color: red;">H</span>
-            <span style="color: violet;">a</span>
-            <span style="color: green;">p</span>
-            <span style="color: orange;">p</span>
-            <span style="color: blue;">y</span>
-            <span style="color: green;"> B</span>
-            <span style="color: red;">i</span>
-            <span style="color: violet;">r</span>
-            <span style="color: orange;">t</span>
-            <span style="color: blue;">h</span>
-            <span style="color: red;"> D</span>
-            <span style="color: violet;">a</span>
-            <span style="color: green;">y</span>
+        <div class="body">
+            <div class="center">
+                <img class="img-circle"
+                     src="https://lh6.googleusercontent.com/-SEtApF2GTfQ/AAAAAAAAAAI/AAAAAAAAAHU/E-jPNhhPSFk/photo.jpg"/>
+            </div>
+            <div >
+                <br/>
+                <span style="font-size: 1.5pc; font-weight: 100; color: gray;">
+                    <span style="color: red;">H</span><!--
+          --><span style="color: violet;">a</span><!--
+          --><span style="color: green;">p</span><!--
+          --><span style="color: orange;">p</span><!--
+          --><span style="color: blue;">y </span> <!--
+          --><span style="color:red;"> 1</span><!--
+          --><sup style="font-size: 1pc;">st </sup> <!--
+          --><span style="color: green;"> A</span><!--
+          --><span style="color:red;">n</span><!--
+          --><span style="color:pink;">n</span><!--
+          --><span style="color:blue;">i</span><!--
+          --><span style="color:red;">v</span><!--
+          --><span style="color:green;">e</span><!--
+          --><span style="color:orange;">r</span><!--
+          --><span style="color:blue;">s</span><!--
+          --><span style="color:red;">a</span><!--
+          --><span style="color:pink;">r</span><!--
+          --><span style="color:blue;">y</span>
+                </span><br/>
+                <span style="color: gray; letter-spacing: 2px;">
+                    with
+                </span>
+                <br/>
+                <span style="font-size: 1.2pc; font-weight: 100; color: #154A9B;">
+                    re<span style="color: #BA2022;">v</span>erside
+                </span>
+                <br/><br/>
+                <span style="color: gray; font-size: 1pc; font-style: normal; font-weight: 100; letter-spacing: 2px;">
+                    Thanks for all...:-)<br/><b>Little</b> And <b>BIG</b> Things you do everyday <br/>That Make this a <b>GREAT</b> Place to Work.
+                </span>
+                <br/><br/><br/>
+            </div>
         </div>
-        <div style="font-size: 1pc; color: gray;">
-            <br/>
-            May all your dreams and wishes come true...
-            <br/>
-            <br/>
-            Enjoy Your Day
-        </div>
-    </div>
 
-    <div class="block-center" >
-        <div style="letter-spacing: 2px; font-size: 0.6pc;">
-            CHEERS
+        <div class="foot" style="font-size: 0.8pc;">
+            <span style="letter-spacing: 2px;">Thanks</span><br/>
+            <span>Reverside Team</span><br/>
         </div>
-        <div style="font-size: 1pc;">
-            <span style="color: blue;">re</span>
-            <span style="color: red;">v</span>
-            <span style="color:blue;">erside</span>
-        </div>
-        <div>
 
-        </div>
     </div>
-
 </body>
 </html>
 </xsl:when>
