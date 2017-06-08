@@ -26,6 +26,9 @@ RabbitMQ
 
 EventStore
 
+Issues :
+To run mongodb in-memory mode on ubuntu you must run : export LC_ALL=C
+
 
 
 

@@ -6,7 +6,7 @@
   	<xsl:output method="xml" omit-xml-declaration="yes"/>
   	
   	<xsl:template match="/ns:BirthdayScheduler">
-		<Send xmlns="http://service.zenerick.com/notification/command">
+		<Notify xmlns="http://service.zenerick.com/notification/command">
 		    <type>BirthdayCommand</type>
 		    <tns:BirthdayCommand xmlns:tns="http://reverside.co.za/schema">
 			    <tns:name><xsl:value-of select="ns:name"/></tns:name>
@@ -14,12 +14,13 @@
 		    </tns:BirthdayCommand>
 			<mail>
 				<to><xsl:value-of select="ns:email"/></to>
+				<cc>manmay.e.mohanty@gmail.com</cc>
 				<subject>Happy Birthday</subject>
 			</mail>
 			<sms>
 				<mobile><xsl:value-of select="ns:mobile"/></mobile>
 			</sms>
-		</Send>
+		</Notify>
   	</xsl:template>
   
 </xsl:stylesheet>

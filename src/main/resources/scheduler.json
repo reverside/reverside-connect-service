@@ -1,6 +1,6 @@
 [
 	{
-		"time" : "0 47 19 * * *",
+		"time" : "0 5 * * * *",
 		"type" : "BirthdayScheduler",
 		"data" : "SELECT  * FROM EMPLOYEES WHERE MONTH(TO_DATE(DOB, 'DD/MM/YYYY')) = MONTH(CURRENT_DATE) AND DAYOFMONTH(TO_DATE(DOB, 'DD/MM/YYYY')) = DAYOFMONTH(CURRENT_DATE)"
 	}
