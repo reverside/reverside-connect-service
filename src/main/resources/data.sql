@@ -1,1 +1,1 @@
-INSERT INTO employees (id, name, surname, email, mobile, photo, dob, doj) VALUES (107, 'Manmay', 'Mohanty', 'manmay.mohanty@reverside.co.za', '0846860904', 'https://lh6.googleusercontent.com/-SEtApF2GTfQ/AAAAAAAAAAI/AAAAAAAAAHU/E-jPNhhPSFk/photo.jpg', '04/06/1983', '04/06/2008');
+INSERT INTO employees (id, name, surname, email, mobile, photo, dob, doj) VALUES (107, 'Manmay', 'Mohanty', 'manmay.mohanty@reverside.co.za', '0846860904', 'https://lh6.googleusercontent.com/-SEtApF2GTfQ/AAAAAAAAAAI/AAAAAAAAAHU/E-jPNhhPSFk/photo.jpg', '09/06/1983', '09/06/2008');
