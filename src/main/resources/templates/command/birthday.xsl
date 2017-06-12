@@ -58,14 +58,17 @@
         </style>
     </head>
 <body>
-    <div class="preheader">
-        Happy Birthday <br/></div>
+
     <div class="container">
+        <div class="preheader">
+            From:
+        </div>
         <div class="head">
             <div style="font-size: 1.5pc; color: #154A9B;">
-                re<span style="color: #BA2022;">v</span>erside
+                Re<span style="color: #BA2022;">v</span>erside
             </div>
         </div>
+
         <div class="body">
             <div class="center">
                 <img class="img-circle"
