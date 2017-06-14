@@ -26,7 +26,7 @@ public class Application {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.groupName("Notification API")
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.zenerick.service.notification"))
+				.apis(RequestHandlerSelectors.basePackage("com.zenerick"))
 				.paths(PathSelectors.any())
 				.build()
 				.apiInfo(new ApiInfoBuilder()
@@ -34,8 +34,8 @@ public class Application {
 				.description("API for notifications through different channels.")
 				.contact(new Contact(
 					"Reverside Innovation Lab",
-					"http://reverside.co.za/innovations-lab",
-					"manmay.moahnty@reverside.co.za"))
+					"http://reverside.co.za/innovation-lab",
+					"manmay.mohanty@reverside.co.za"))
 				.license("License")
 				.licenseUrl("http://reverside.co.za/license")
 				.version("0.0.1")
