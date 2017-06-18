@@ -1,0 +1,13 @@
+{
+  "id": "Notification",
+  "package": "com.zenerick",
+  "name": "Reverside Notification API",
+  "description": "API for OAuth2 authentication",
+  "developer": {
+    "name": "Reverside Innovation Lab",
+    "email": "manmay.mohanty@reverside.co.za",
+    "url": "http://reverside.io/innovations-lab"
+  },
+  "license":"http://reverside.co.za/license",
+  "apiKey": true
+}
