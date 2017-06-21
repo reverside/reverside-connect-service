@@ -6,7 +6,6 @@
         jaxb:version="2.1"
         elementFormDefault="qualified">
 
-   <include schemaLocation="command/birthday.xsd"/>
-   <include schemaLocation="scheduler/birthday.xsd"/>
+   <include schemaLocation="birthday.xsd"/>
 
 </schema>
