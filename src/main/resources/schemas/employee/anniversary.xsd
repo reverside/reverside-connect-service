@@ -6,7 +6,13 @@
         jaxb:version="2.1"
         elementFormDefault="qualified">
 
-   <include schemaLocation="employee/birthday.xsd"/>
-   <include schemaLocation="employee/anniversary.xsd"/>
+    <element name="AnniversaryCommand">
+        <complexType>
+            <sequence>
+                <element name="name"  type="string"/>
+                <element name="photo" type="anyURI"/>
+            </sequence>
+        </complexType>
+    </element>
 
 </schema>

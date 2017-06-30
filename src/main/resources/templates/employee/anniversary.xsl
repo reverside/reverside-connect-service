@@ -4,7 +4,7 @@
                 xmlns:ns="http://reverside.co.za/schema">
 <xsl:output method="xml" omit-xml-declaration="yes"/>
 <xsl:param name="channel"/>
-<xsl:template match="/ns:BirthdayCommand">
+<xsl:template match="/ns:AnniversaryCommand">
 <xsl:choose>
 <xsl:when test="$channel='mail'">
 <html>
@@ -21,17 +21,23 @@
     </head>
     <body>
         <div class="container">
-            <div class="preheader">Dear Manmay, Thank you for being with us. From:</div>
+            <div class="preheader">From: </div>
             <div class="head">Re<span style="color: #BA2022;">v</span>erside</div>
             <div class="body">
                 <div>
                     <img style="width: 150px; height: 100px;" src="http://www.stickpng.com/assets/images/580b585b2edbce24c47b24c6.png"/>
                 </div>
-                <br/>
+                <div style="color: slategray;">
+                    <br/>
+                    <b>Dear Manmay,</b><br/>
+                    You might have forgot today's date<br/>
+                    But we are not. 3 years ago joined us<br/>
+                    And today you completed 3 years.<br/>
+                    Thanks for being a part of our journey.<br/><br/>
+                </div>
                 <div>
                     <span style="font-size: 1.5pc; font-weight: 100; color: gray;">
-                    Dear Manmay,<br/>
-                    <span style="color: red;">H</span><!--
+                       <span style="color: red;">H</span><!--
                     --><span style="color: violet;">a</span><!--
                     --><span style="color: green;">p</span><!--
                     --><span style="color: orange;">p</span><!--
@@ -75,16 +81,9 @@
 </html>
 </xsl:when>
 <xsl:when test="$channel='sms'">
-Dear <xsl:value-of select="ns:name"/> Many many Happy Returns Of The Day
+Dear <xsl:value-of select="ns:name"/>, Today you've completed 3 years with reverside. Happy Anniversary. Thanks for being a part of our journey..
 
-       _!_!_!_!_
-     !..............!
-   !..................!
- !______________!
- Happy Birthday
-
-From:
-Reverside
+From:Reverside
 </xsl:when>
 </xsl:choose>
 </xsl:template>
